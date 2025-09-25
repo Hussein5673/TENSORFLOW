@@ -1,0 +1,62 @@
+from Bio.Seq import Seq
+
+USER_NAME = "biologist"
+START_CODON = "ATG"
+STOP_CODONS = ["TAA", "TAG", "TGA"]
+
+CODON_TO_AMINO_ACID = {
+    "TTT": "F", "TTC": "F", "TTA": "L", "TTG": "L",
+    "CTT": "L", "CTC": "L", "CTA": "L", "CTG": "L",
+    "ATT": "I", "ATC": "I", "ATA": "I", "ATG": "M",
+    "GTT": "V", "GTC": "V", "GTA": "V", "GTG": "V",
+    "TCT": "S", "TCC": "S", "TCA": "S", "TCG": "S",
+    "CCT": "P", "CCC": "P", "CCA": "P", "CCG": "P",
+    "ACT": "T", "ACC": "T", "ACA": "T", "ACG": "T",
+    "GCT": "A", "GCC": "A", "GCA": "A", "GCG": "A",
+    "TAT": "Y", "TAC": "Y", "TAA": "", "TAG": "",
+    "CAT": "H", "CAC": "H", "CAA": "Q", "CAG": "Q",
+    "AAT": "N", "AAC": "N", "AAA": "K", "AAG": "K",
+    "GAT": "D", "GAC": "D", "GAA": "E", "GAG": "E",
+    "TGT": "C", "TGC": "C", "TGA": "", "TGG": "W",
+    "CGT": "R", "CGC": "R", "CGA": "R", "CGG": "R",
+    "AGT": "S", "AGC": "S", "AGA": "R", "AGG": "R",
+    "GGT": "G", "GGC": "G", "GGA": "G", "GGG": "G"
+}
+
+# Dictionary to map alphabetic characters to DNA codons
+LETTER_TO_CODON = {
+    "A": "ATA", "B": "ATC", "C": "CTG", "D": "GAC", "E": "GAG", "F": "TTC", 
+    "G": "GGA", "H": "CAT", "I": "ATG", "J": "TAA", "K": "AAA", "L": "TTA", 
+    "M": "ATG", "N": "AAC", "O": "XOX", "P": "CCT", "Q": "CAA", "R": "CGT", 
+    "S": "TCT", "T": "ACC", "U": "XUX", "V": "GTC", "W": "TGG", "X": "XXX", 
+    "Y": "TAC", "Z": "XZX"
+}
+
+def translate_dna_to_protein(dna_sequence):
+    protein_sequence = []
+    for i in range(0, len(dna_sequence), 3):
+        codon = dna_sequence[i:i + 3]
+        if len(codon) == 3:
+            amino_acid = CODON_TO_AMINO_ACID.get(codon, 'X')  # Use 'X' for unknown codons
+            protein_sequence.append(amino_acid)
+    return ''.join(protein_sequence)
+
+def prepare_dna_sequence(input_sequence):
+    # Convert the input sequence (e.g., a name) to a DNA sequence
+    dna_sequence = []
+    for letter in input_sequence.upper():
+        dna_sequence.append(LETTER_TO_CODON.get(letter, "XXX"))  # Default to "XXX" for unrecognized characters
+    return START_CODON + ''.join(dna_sequence) + STOP_CODONS[0]
+
+def main():
+    print(f"Welcome, {USER_NAME}! 😊")
+    print("This program will help you convert a DNA sequence into its corresponding protein sequence.")
+    dna_input = input("Please enter your DNA sequence or name (only alphabetic characters): ").upper()
+    complete_dna_sequence = prepare_dna_sequence(dna_input)
+    print(f"\nYour DNA sequence with start and stop codons: {complete_dna_sequence}")
+    protein_output = translate_dna_to_protein(complete_dna_sequence)
+    print(f"Your translated protein sequence: {protein_output}")
+    print("\nThank you for using this tool! 🎉")
+
+if __name__ == "__main__":
+    main()

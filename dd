@@ -1,0 +1,41 @@
+from graphviz import Digraph
+
+# Create a new directed graph for the Use Case Diagram
+use_case = Digraph(comment='Fitness App Use Case Diagram')
+use_case.attr(size='10,10')
+
+# Define Actors
+use_case.node('User', 'User', shape='actor')
+use_case.node('Trainer', 'Trainer', shape='actor')
+use_case.node('Admin', 'Admin', shape='actor')
+
+# Define Use Cases for User
+user_cases = [
+    "Register / Login", "Update Profile", "Calculate BMI", "Get Trainer Suggestions",
+    "View Gyms Nearby", "Subscribe to Plan", "View Workout & Meal Plans", "Track Progress",
+    "Chat with Trainer", "Join Live Classes", "Participate in Challenges", "Use Chatbot"
+]
+
+for case in user_cases:
+    use_case.node(case, case, shape='ellipse')
+    use_case.edge('User', case)
+
+# Define Use Cases for Trainer
+trainer_cases = [
+    "Manage Profile", "Create Workout Plan", "Create Meal Plan", "Track User Progress",
+    "Host Live Classes", "Communicate with Users", "Participate in Challenges"
+]
+
+for case in trainer_cases:
+    use_case.node(case, case, shape='ellipse')
+    use_case.edge('Trainer', case)
+
+# Define Use Cases for Admin
+admin_cases = ["Manage Users", "View App Metrics", "Manage Subscriptions"]
+
+for case in admin_cases:
+    use_case.node(case, case, shape='ellipse')
+    use_case.edge('Admin', case)
+
+# Render and save the use case diagram
+use_case.render(filename='fitness_app_use_case_diagram', format='png')

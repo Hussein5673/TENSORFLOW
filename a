@@ -1,0 +1,41 @@
+import os
+from graphviz import Digraph
+
+# Set the path to Graphviz executables (you need to adjust this to your system's path)
+os.environ["PATH"] += r";C:\Program Files\Graphviz\bin"
+
+# Create a new directed graph for the Use Case Diagram
+use_case = Digraph(comment='Fitness App Use Case Diagram')
+use_case.attr(dpi='300', size='12,12', rankdir='TB', fontname='Helvetica')  # Top-to-bottom layout and improved DPI
+
+# Define Actors with better styling
+use_case.node('User', 'User', shape='actor', style='filled', fillcolor='skyblue', fontsize='18', width='1.5')
+use_case.node('Trainer', 'Trainer', shape='actor', style='filled', fillcolor='lightgreen', fontsize='18', width='1.5')
+use_case.node('Admin', 'Admin', shape='actor', style='filled', fillcolor='lightyellow', fontsize='18', width='1.5')
+
+# User use cases with improved styling
+user_cases = ["Register / Login", "Update Profile", "Calculate BMI", "Get Trainer Suggestions", 
+              "View Gyms Nearby", "Subscribe to Plan", "View Workout & Meal Plans", "Track Progress", 
+              "Chat with Trainer", "Join Live Classes", "Participate in Challenges", "Use Chatbot"]
+for case in user_cases:
+    use_case.node(case, case, shape='ellipse', style='filled', fillcolor='lightcoral', fontsize='14', fontname='Helvetica', width='2')
+    use_case.edge('User', case, color='blue', penwidth='2')
+
+# Trainer use cases with improved styling
+trainer_cases = ["Manage Profile", "Create Workout Plan", "Create Meal Plan", "Track User Progress", 
+                 "Host Live Classes", "Communicate with Users", "Participate in Challenges"]
+for case in trainer_cases:
+    use_case.node(case, case, shape='ellipse', style='filled', fillcolor='lightpink', fontsize='14', fontname='Helvetica', width='2')
+    use_case.edge('Trainer', case, color='green', penwidth='2')
+
+# Admin use cases with improved styling
+admin_cases = ["Manage Users", "View App Metrics", "Manage Subscriptions"]
+for case in admin_cases:
+    use_case.node(case, case, shape='ellipse', style='filled', fillcolor='lightgoldenrodyellow', fontsize='14', fontname='Helvetica', width='2')
+    use_case.edge('Admin', case, color='orange', penwidth='2')
+
+# Optional: Add a title for clarity and set better labels
+use_case.attr(label='Fitness App Use Case Diagram', labelloc='t', fontsize='20', fontname='Helvetica-Bold', fontcolor='black')
+
+# Render and save the file as PNG
+use_case.render('fitness_app_use_case_diagram1', format='png', cleanup=True)

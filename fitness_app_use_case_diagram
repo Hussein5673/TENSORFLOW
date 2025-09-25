@@ -1,0 +1,52 @@
+// Fitness App Use Case Diagram
+digraph {
+	size="10,10"
+	User [label=User fillcolor=lightblue fontsize=14 shape=actor style=filled]
+	Trainer [label=Trainer fillcolor=lightgreen fontsize=14 shape=actor style=filled]
+	Admin [label=Admin fillcolor=lightyellow fontsize=14 shape=actor style=filled]
+	"Register / Login" [label="Register / Login" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "Register / Login"
+	"Update Profile" [label="Update Profile" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "Update Profile"
+	"Calculate BMI" [label="Calculate BMI" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "Calculate BMI"
+	"Get Trainer Suggestions" [label="Get Trainer Suggestions" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "Get Trainer Suggestions"
+	"View Gyms Nearby" [label="View Gyms Nearby" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "View Gyms Nearby"
+	"Subscribe to Plan" [label="Subscribe to Plan" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "Subscribe to Plan"
+	"View Workout & Meal Plans" [label="View Workout & Meal Plans" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "View Workout & Meal Plans"
+	"Track Progress" [label="Track Progress" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "Track Progress"
+	"Chat with Trainer" [label="Chat with Trainer" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "Chat with Trainer"
+	"Join Live Classes" [label="Join Live Classes" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "Join Live Classes"
+	"Participate in Challenges" [label="Participate in Challenges" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "Participate in Challenges"
+	"Use Chatbot" [label="Use Chatbot" fillcolor=lightcoral fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	User -> "Use Chatbot"
+	"Manage Profile" [label="Manage Profile" fillcolor=lightpink fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	Trainer -> "Manage Profile"
+	"Create Workout Plan" [label="Create Workout Plan" fillcolor=lightpink fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	Trainer -> "Create Workout Plan"
+	"Create Meal Plan" [label="Create Meal Plan" fillcolor=lightpink fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	Trainer -> "Create Meal Plan"
+	"Track User Progress" [label="Track User Progress" fillcolor=lightpink fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	Trainer -> "Track User Progress"
+	"Host Live Classes" [label="Host Live Classes" fillcolor=lightpink fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	Trainer -> "Host Live Classes"
+	"Communicate with Users" [label="Communicate with Users" fillcolor=lightpink fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	Trainer -> "Communicate with Users"
+	"Participate in Challenges" [label="Participate in Challenges" fillcolor=lightpink fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	Trainer -> "Participate in Challenges"
+	"Manage Users" [label="Manage Users" fillcolor=lightgoldenrodyellow fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	Admin -> "Manage Users"
+	"View App Metrics" [label="View App Metrics" fillcolor=lightgoldenrodyellow fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	Admin -> "View App Metrics"
+	"Manage Subscriptions" [label="Manage Subscriptions" fillcolor=lightgoldenrodyellow fontname=Helvetica fontsize=12 shape=ellipse style=filled]
+	Admin -> "Manage Subscriptions"
+	fontname="Helvetica-Bold" fontsize=18 label="Fitness App Use Case Diagram" labelloc=t
+}
